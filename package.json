@@ -1,6 +1,6 @@
 {
   "name": "vue-content-wrapper",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Very basic Vue component for automatic creating two layers of elements (Container wrapper, around content wrapper, around content) on top of the default slot",
   "main": "./src/main.js",
   "scripts": {
