@@ -4,7 +4,8 @@
   "description": "Very basic Vue component for automatic creating two layers of elements (Container wrapper, around content wrapper, around content) on top of the default slot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
