@@ -2,7 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/ContentWrapper',
+  entry: './src/ContentWrapper.vue',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
