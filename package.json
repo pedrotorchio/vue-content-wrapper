@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "make": "vue-cli-service build --target lib --name ContentWrapper src/App.vue"
   },
   "dependencies": {
     "vue": "^2.5.17"
@@ -39,5 +40,11 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
+  ],
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.js",
+    "*.json"
   ]
 }

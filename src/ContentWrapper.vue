@@ -1,7 +1,9 @@
-<template lang="pug">
-  section(v-on='containerListeners' v-bind='containerAttrs')
-    div(v-on='contentListeners' v-bind='contentAttrs')
-      slot
+<template>
+  <section v-on='containerListeners' v-bind='containerAttrs'>
+    <div v-on='contentListeners' v-bind='contentAttrs'>
+      <slot></slot>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -9,50 +11,74 @@ export default {
   inheritAttrs: false,
   name: "ContentWrapper",
   props: {
-    prefix: {
+    contentPrefix: {
       type: String,
       default: 'content-'
     }
   },
   methods: {
     split(what) {
-      // splits content-* and *
+      // what:Object, set of attributes/listeners
+      // splits content by keys with and without prefix (default 'content-')
+      // into two objects, [container, content]
+
+      // if argument is not Object, return empty objects
       if (what.constructor != Object)
-        return [[],[]];
+        return [{},{}];
       
       const keys = Object.keys(what);
-      const content = [];
-      const container = [];
+      
+      let contentKeys = [];
+      let containerKeys = [];
 
-      keys.forEach(
-        key => key.indexOf(this.prefix) === 0 ? 
-          content.push(key.substring(this.prefix.length, key.length)) : container(key));
+      // for each key
+      // if key starts with the prefix,
+      //    it's content property
+      // else, it's container property
 
-      return [content, container];
+      keys.forEach(key => {
+        if (key.indexOf(this.contentPrefix) === 0)
+          contentKeys.push(key);
+        else 
+          containerKeys.push(key);
+      });
+      
+      // extract values
+      let content = {};
+      contentKeys.forEach(key => {
+        let newkey = key.substring(this.contentPrefix.length, key.length);
+        content[newkey] = what[key];
+      })
+
+      let container = {};
+      containerKeys.forEach(key => {
+        container[key] = what[key];
+      });
+      
+      return [container, content];
     }
   },
   computed: {
     ___splitListeners() {
-      const keys = Object.keys(this.$listeners);
-      const split = this.split(keys);
+      const split = this.split(this.$listeners);
       return split;
     },
     ___splitAttrs() {
-      const keys = Object.keys(this.$listeners);
-      const split = this.split(keys);
+      const split = this.split(this.$attrs);
+
       return split;
     },
     containerListeners() {
-      return this.___splitListeners()[0];
+      return this.___splitListeners[0];
     },
     contentListeners() {
-      return this.___splitListeners()[1];
+      return this.___splitListeners[1];
     },
     containerAttrs() {
-      return this.___splitAttrs()[0];
+      return this.___splitAttrs[0];
     },
     contentAttrs() {
-      return this.___splitAttrs()[1];
+      return this.___splitAttrs[1];
     }
   }
 }
