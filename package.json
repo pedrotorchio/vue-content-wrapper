@@ -1,0 +1,43 @@
+{
+  "name": "vue-content-wrapper",
+  "version": "1.1.1",
+  "description": "Very basic Vue component for automatic creating two layers of elements (Container wrapper, around content wrapper, around content) on top of the default slot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrotorchio/vue-content-wrapper.git"
+  },
+  "keywords": [
+    "vue",
+    "component",
+    "container",
+    "content",
+    "slot",
+    "wrapper"
+  ],
+  "author": "pedrotorchio <pedro@torchiodev.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedrotorchio/vue-content-wrapper/issues"
+  },
+  "homepage": "https://github.com/pedrotorchio/vue-content-wrapper#readme",
+  "dependencies": {
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.3.0",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.16.5"
+  }
+}
