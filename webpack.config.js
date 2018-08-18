@@ -8,7 +8,7 @@ module.exports = {
     // specify your output directory...
     path: path.resolve(__dirname, "./dist"),
     // and filename
-    filename: "vuejs-hello-app.js"
+    filename: "content-wrapper.js"
   },
   module: {
     rules: [
