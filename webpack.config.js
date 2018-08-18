@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
+var VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = {
   entry: "./src/main.js",
@@ -17,6 +18,9 @@ module.exports = {
       { test: /\.vue$/, use: "vue-loader" }
     ]
   },
+  plugins: [
+    new VueLoaderPlugin()
+  ],
   // default for pretty much every project
   context: __dirname,
 };
